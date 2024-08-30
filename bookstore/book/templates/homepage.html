@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{%  load crispy_forms_tags %}
+{% load static%}
+{% block 'body'%}
+<br>
+
+<h1>Hi, this is the Library homepage</h1>
+<br>
+<img src="{% static 'images/logo.png' %}">
+<br>
+<br>
+{%if books%}
+<div class="col-sm-8">
+<table class="table table-striped">
+    <thead><tr><th>Id</th><th>Name</th><th>Category</th><th>Rating</th><th>Description</th></tr><th colspan="2"></th></tr></thead>
+    {%for b in books%}
+    <tr><td>{{b.id}}</td><td>{{b.name}}</td><td>{{b.category}}</td><td>{{b.rating}}</td><td>{{b.description}}</td><td><a href="{% url 'updatebook' b.id  %}" class="btn btn-warning">Update</a></td><td><a href="{% url 'deletebook' b.id  %}" class="btn btn-danger">Delete</a></td></tr>
+    {%endfor%}
+</table>
+</div>
+{%else%}
+<p>No Book found</p>
+{%endif%}
+
+{% endblock%}

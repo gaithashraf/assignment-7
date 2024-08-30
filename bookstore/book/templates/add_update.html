@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{%  load crispy_forms_tags %}
+{%block 'title'%}Add{%endblock%}
+{% block 'body'%}
+<br>
+<form method="post">
+    <div class="col-sm-8">
+<table>
+{{form|crispy}}
+    </table>
+    </div>
+    <br>
+    <button type="submit" class="btn btn-outline-primary" formnovalidate>Save Book</button>
+    {% csrf_token %}
+    </form>
+{% endblock%}
